@@ -11,11 +11,29 @@ interface IGuessable
 
 namespace ParProgrammeringGuessingNumber
 {
-    internal class Computer : IGuessable
+    //internal class Computer : IGuessable
+    //{
+    //    public void Guess()
+    //    {
+
+    //    }
+
+
+    //}
+
+    internal class Brains : IGuessable
     {
-        public void Guess() 
+        public void Guess()
         {
-        
+
+        }
+    }
+
+    internal class NoBrain : IGuessable
+    {
+        public void Guess()
+        {
+
         }
     }
 }

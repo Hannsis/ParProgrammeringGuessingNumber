@@ -4,6 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Logic.Run();
-    } }
+            
+            Logic.Run(Spelaren.HolyNumber);
+        }
+    }
 }
