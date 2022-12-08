@@ -25,7 +25,7 @@ namespace ParProgrammeringGuessingNumber
 
         public static void ComputersGuess(int number)
         {
-            Console.WriteLine($"Jag vill gissa nummer: {number}! \nSNELA säg att det är RÄÄÄTTT!! <3");
+            Console.WriteLine($"\nJag vill gissa nummer: {number}! \nSNELA säg att det är RÄÄÄTTT!! <3\n");
         }
 
         public static void GiveHints() 
@@ -40,7 +40,7 @@ namespace ParProgrammeringGuessingNumber
         }
         public static void Win() 
         {
-            Console.WriteLine("You won!");
+            Console.WriteLine("I, The computer, won! >:)");
         }
     }
 

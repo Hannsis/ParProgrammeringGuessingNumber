@@ -6,34 +6,54 @@ using System.Threading.Tasks;
 
 interface IGuessable
 {
-    void Guess(); //interface metod för att gissa siffra (does not have a body) 
+    public static void Low() { }
+
+    public static void High() { }
 }
 
 namespace ParProgrammeringGuessingNumber
 {
-    //internal class Computer : IGuessable
-    //{
-    //    public void Guess()
-    //    {
 
-    //    }
-
-
-    //}
-
-    internal class Brains : IGuessable
+    internal class Brain : IGuessable
     {
-        public void Guess()
+        public static int MaxValue { get; set; } = 1001;
+        public static int MinValue { get; set; } = 1;
+        public static int Low(int number) 
         {
+            MaxValue= number;
+            Random random = new Random();
+            number = random.Next(MinValue, MaxValue);
+            Print.ComputersGuess(number);
+            return number;
+        }
 
+        public static int High(int number) 
+        {
+            MinValue = number;
+            Random random = new Random();
+            number = random.Next(MinValue, MaxValue);
+            Print.ComputersGuess(number);
+            return number;
         }
     }
 
     internal class NoBrain : IGuessable
     {
-        public void Guess()
-        {
 
+        public static int Low(int number) 
+        {
+            Random random= new Random();
+            number = random.Next(1, number);
+            Print.ComputersGuess(number);
+            return number;
+        }
+
+        public static int High(int number) 
+        {
+            Random random = new Random();
+            number = random.Next(number, 1001);
+            Print.ComputersGuess(number);
+            return number;
         }
     }
 }

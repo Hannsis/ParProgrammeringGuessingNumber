@@ -8,10 +8,11 @@ namespace ParProgrammeringGuessingNumber
 {
     internal class Logic
     {
-        public static int number;
-            
+        public static int number { get; set; }
+        public static int HolyNumber { get; set; }
+        public static int WhatBrain { get; set; }
 
-        public static void Run(int HolyNumber)
+        public static void Run()
         {
             Spelaren spelaren = new Spelaren();
             Meny(HolyNumber);
@@ -22,7 +23,7 @@ namespace ParProgrammeringGuessingNumber
             Print.MenyVal();
             SwitchMeny(); //varje metod has soul purpose. mjau. SOUL. 
             Print.ChooseNumber();
-            Spelaren.HolyNumber = Spelaren.PickANumber();
+            HolyNumber = Spelaren.PickANumber(HolyNumber);
             number = RandomizedGuess();
             Print.ComputersGuess(number);
             CheckNumber(HolyNumber);
@@ -35,11 +36,13 @@ namespace ParProgrammeringGuessingNumber
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
+                    WhatBrain = 1;
                     break;
                 //metod för Brainz
 
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
+                    WhatBrain = 2;
                     break;
                 //metod för noBrainz
 
@@ -58,18 +61,49 @@ namespace ParProgrammeringGuessingNumber
 
         public static void CheckNumber(int HolyNumber)
         {
-            if (number == HolyNumber)
+            if (WhatBrain == 1)
             {
-                Print.CorrectGuess();
-            }
-            else
+                BrainCheck(HolyNumber);
+            } 
+            else if (WhatBrain == 2)
             {
-                Print.GiveHints();
-                Spelaren.TooHighTooLow(number);
+                NoBrainCheck(HolyNumber);
             }
         }
-
-
+        public static void BrainCheck(int HolyNumber)
+        {
+            while (true)
+            {
+                if (number == HolyNumber)
+                {
+                    Print.CorrectGuess();
+                    Print.Win();
+                    break;
+                }
+                else
+                {
+                    Print.GiveHints();
+                    number = Spelaren.TooHighTooLowBrain(number);
+                }
+            }
+        }
+        public static void NoBrainCheck(int HolyNumber)
+        {
+            while (true)
+            {
+                if (number == HolyNumber)
+                {
+                    Print.CorrectGuess();
+                    Print.Win();
+                    break;
+                }
+                else
+                {
+                    Print.GiveHints();
+                    number = Spelaren.TooHighTooLowNoBrain(number);
+                }
+            }
+        }
     }
 
 }

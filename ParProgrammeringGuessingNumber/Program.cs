@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             
-            Logic.Run(Spelaren.HolyNumber);
+            Logic.Run();
         }
     }
 }
